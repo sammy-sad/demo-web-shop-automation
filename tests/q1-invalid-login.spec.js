@@ -8,4 +8,5 @@ test('shows error for invalid login', async ({ page }) => {
   await expect(
     page.getByText('Login was unsuccessful. Please correct the errors and try again.')
   ).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Log out' })).not.toBeVisible();
 });
