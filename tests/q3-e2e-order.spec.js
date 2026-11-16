@@ -6,4 +6,5 @@ test('user can search for a product', async ({ page }) => {
   await page.goto('https://demowebshop.tricentis.com/');
   await searchPage.search('Computing');
   await expect(page.getByRole('link', { name: 'Computing and Internet', exact: true })).toBeVisible();
+  await page.getByRole('link', { name: 'Computing and Internet', exact: true }).click();
 });
