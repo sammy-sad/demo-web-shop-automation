@@ -8,4 +8,6 @@ test('new user can register', async ({ page }) => {
   await registerPage.register('Sam', 'Khan', email, 'Test@1234');
   await expect(page.getByText('Your registration completed')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Log out' })).toBeVisible();
+  await page.goto('https://demowebshop.tricentis.com/books');
+  await page.getByRole('link', { name: 'Computing and Internet', exact: true }).click();
 });
