@@ -1,4 +1,3 @@
-// pages/CheckoutPage.js
 class CheckoutPage {
   constructor(page) {
     this.page = page;
@@ -12,6 +11,7 @@ class CheckoutPage {
     this.shippingContinueButton = page.locator('input[onclick="Shipping.save()"]');
     this.shippingMethodContinueButton = page.locator('input[onclick="ShippingMethod.save()"]');
     this.paymentMethodContinueButton = page.locator('input[onclick="PaymentMethod.save()"]');
+    this.paymentInfoContinueButton = page.locator('input[onclick="PaymentInfo.save()"]');
   }
 
   async fillBilling(city, address, zip, phone) {
@@ -33,6 +33,10 @@ class CheckoutPage {
 
   async continuePaymentMethod() {
     await this.paymentMethodContinueButton.click();
+  }
+
+  async continuePaymentInfo() {
+    await this.paymentInfoContinueButton.click();
   }
 }
 
