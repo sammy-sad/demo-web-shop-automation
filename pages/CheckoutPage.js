@@ -7,7 +7,8 @@ class CheckoutPage {
     this.addressBox = page.locator('#BillingNewAddress_Address1');
     this.zipBox = page.locator('#BillingNewAddress_ZipPostalCode');
     this.phoneBox = page.locator('#BillingNewAddress_PhoneNumber');
-    this.billingContinueButton = page.locator('.new-address-next-step-button');
+    this.billingContinueButton = page.locator('input[onclick="Billing.save()"]');
+    this.shippingContinueButton = page.locator('input[onclick="Shipping.save()"]');
   }
 
   async fillBilling(city, address, zip, phone) {
@@ -17,6 +18,10 @@ class CheckoutPage {
     await this.zipBox.fill(zip);
     await this.phoneBox.fill(phone);
     await this.billingContinueButton.click();
+  }
+
+  async continueShipping() {
+    await this.shippingContinueButton.click();
   }
 }
 
