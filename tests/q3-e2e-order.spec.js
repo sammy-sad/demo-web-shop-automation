@@ -3,6 +3,7 @@ const { SearchPage } = require('../pages/SearchPage');
 const { ProductPage } = require('../pages/ProductPage');
 const { CartPage } = require('../pages/CartPage');
 const { RegisterPage } = require('../pages/RegisterPage');
+const { CheckoutPage } = require('../pages/CheckoutPage');
 
 test('user can search for a product', async ({ page }) => {
   const searchPage = new SearchPage(page);
@@ -10,6 +11,7 @@ test('user can search for a product', async ({ page }) => {
   const cartPage = new CartPage(page);
   const registerPage = new RegisterPage(page);
   const email = `shopper${Date.now()}@example.com`;
+  const checkoutPage = new CheckoutPage(page);
   await page.goto('https://demowebshop.tricentis.com/register');
   await registerPage.register('Sam', 'Khan', email, 'Test@1234');
   await expect(page.getByText('Your registration completed')).toBeVisible();
