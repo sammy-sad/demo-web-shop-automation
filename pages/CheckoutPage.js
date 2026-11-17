@@ -11,6 +11,7 @@ class CheckoutPage {
     this.billingContinueButton = page.locator('input[onclick="Billing.save()"]');
     this.shippingContinueButton = page.locator('input[onclick="Shipping.save()"]');
     this.shippingMethodContinueButton = page.locator('input[onclick="ShippingMethod.save()"]');
+    this.paymentMethodContinueButton = page.locator('input[onclick="PaymentMethod.save()"]');
   }
 
   async fillBilling(city, address, zip, phone) {
@@ -28,6 +29,10 @@ class CheckoutPage {
 
   async continueShippingMethod() {
     await this.shippingMethodContinueButton.click();
+  }
+
+  async continuePaymentMethod() {
+    await this.paymentMethodContinueButton.click();
   }
 }
 
