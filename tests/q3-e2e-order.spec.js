@@ -30,4 +30,5 @@ test('user can search for a product', async ({ page }) => {
   await checkoutPage.continuePaymentMethod();
   await checkoutPage.continuePaymentInfo();
   await checkoutPage.confirmOrder();
+  await expect(page.getByText('Your order has been successfully processed!')).toBeVisible();
 });
