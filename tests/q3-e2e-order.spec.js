@@ -10,8 +10,8 @@ test('user can search for a product', async ({ page }) => {
   const productPage = new ProductPage(page);
   const cartPage = new CartPage(page);
   const registerPage = new RegisterPage(page);
-  const email = `shopper${Date.now()}@example.com`;
   const checkoutPage = new CheckoutPage(page);
+  const email = `shopper${Date.now()}@example.com`;
   await page.goto('https://demowebshop.tricentis.com/register');
   await registerPage.register('Sam', 'Khan', email, 'Test@1234');
   await expect(page.getByText('Your registration completed')).toBeVisible();
@@ -24,4 +24,10 @@ test('user can search for a product', async ({ page }) => {
   await expect(page.getByText('The product has been added to your shopping cart')).toBeVisible();
   await page.goto('https://demowebshop.tricentis.com/cart');
   await cartPage.proceedToCheckout();
+  await checkoutPage.fillBilling('New York', '123 Main Street', '10001', '5551234567');
+  await checkoutPage.continueShipping();
+  await checkoutPage.continueShippingMethod();
+  await checkoutPage.continuePaymentMethod();
+  await checkoutPage.continuePaymentInfo();
+  await checkoutPage.confirmOrder();
 });
